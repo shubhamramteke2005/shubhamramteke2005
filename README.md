@@ -18,10 +18,7 @@ Hi, I'm **Shubham Ramteke**. My public projects include Python, JavaScript and T
 
 ### 03 / GitHub activity
 
-<p align="center">
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=shubhamramteke2005&show_icons=true&hide_border=true&bg_color=080c22&title_color=b890ff&text_color=cac7df&icon_color=64e4dd" alt="GitHub statistics" />
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shubhamramteke2005&layout=compact&hide_border=true&bg_color=080c22&title_color=b890ff&text_color=cac7df" alt="Repository languages" />
-</p>
+<img src="https://raw.githubusercontent.com/shubhamramteke2005/shubhamramteke2005/output/stats.svg" width="100%" alt="Daily GitHub statistics: public repos, stars, followers and primary repository languages" />
 
 ### 04 / Contribution snake
 
