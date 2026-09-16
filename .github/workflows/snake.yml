@@ -23,6 +23,25 @@ jobs:
             dist/snake.svg?palette=github-dark&color_snake=#bd83ff&color_dots=#161b33,#304863,#467c91,#61b9bd,#91eee4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate GitHub statistics
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const username = context.repo.owner;
+            const { data: user } = await github.rest.users.getByUsername({ username });
+            const repos = await github.paginate(github.rest.repos.listForUser, { username, per_page: 100 });
+            const stars = repos.reduce((n,r) => n + r.stargazers_count, 0);
+            const counts = {};
+            for (const r of repos) if (r.language) counts[r.language] = (counts[r.language] || 0) + 1;
+            const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+            let svg = '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="245" viewBox="0 0 900 245"><rect width="900" height="245" rx="14" fill="#080c22"/><style>text{font-family:monospace}</style><text x="28" y="35" fill="#64e4dd" font-size="14">GITHUB.TELEMETRY</text>';
+            const metrics = [[user.public_repos,'PUBLIC REPOS'],[stars,'STARS EARNED'],[user.followers,'FOLLOWERS']];
+            metrics.forEach(([value,label],i) => {const x=30+i*155; svg += '<text x="'+x+'" y="105" font-size="38" fill="#c298ff">'+value+'</text><text x="'+x+'" y="133" fill="#969bbb" font-size="12">'+label+'</text>';});
+            svg += '<line x1="495" y1="55" x2="495" y2="191" stroke="#454262"/><text x="530" y="65" fill="#64e4dd" font-size="13">PRIMARY LANGUAGE / REPO COUNT</text>';
+            Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,4).forEach(([lang,n],i)=>{const y=95+i*25;svg+='<text x="530" y="'+y+'" fill="#d9d4ec" font-size="14">'+esc(lang)+'</text><text x="830" y="'+y+'" fill="#c298ff" font-size="14">'+n+'</text>';});
+            svg += '<text x="28" y="220" fill="#8086a6" font-size="11">PUBLIC GITHUB DATA / UPDATED '+new Date().toISOString().slice(0,10)+'</text></svg>';
+            fs.mkdirSync('dist',{recursive:true}); fs.writeFileSync('dist/stats.svg',svg);
       - name: Publish generated asset
         uses: crazy-max/ghaction-github-pages@v4
         with:
