@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/terminal.gif" width="100%" alt="Shubham Ramteke — animated developer terminal" /></p>
+<p align="center"><img src="terminal.gif" width="100%" alt="Shubham Ramteke — animated developer terminal" /></p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/Python-64e4dd?style=for-the-badge&logo=python&logoColor=080c22" alt="Python" />
@@ -12,7 +12,7 @@ Hi, I'm **Shubham Ramteke**. My public projects include Python, JavaScript and T
 
 ### 02 / Projects
 
-<img src="assets/projects.svg" width="100%" alt="Featured repositories: genai, schoolagent, city_clinic and warehouse" />
+<img src="projects.svg" width="100%" alt="Featured repositories: genai, schoolagent, city_clinic and warehouse" />
 
 <p align="center"><a href="https://github.com/shubhamramteke2005/genai">genai ↗</a> · <a href="https://github.com/shubhamramteke2005/schoolagent">schoolagent ↗</a> · <a href="https://github.com/shubhamramteke2005/city_clinic">city_clinic ↗</a> · <a href="https://github.com/shubhamramteke2005/warehouse">warehouse ↗</a></p>
 
